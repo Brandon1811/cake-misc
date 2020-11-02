@@ -144,7 +144,7 @@ class {{ className }}Test extends TestCase
             'action' => '{{ method }}',
             1,
         ];
-{% if  method|camelize == 'index' %}
+{% if  method|camelize == 'Index' %}
         $url = [
             'prefix' => false,
             'plugin' => false,
@@ -154,18 +154,7 @@ class {{ className }}Test extends TestCase
         $this->get($url);
         $this->assertResponseCode(200);
 {% endif %}
-{% if  method|camelize == 'view' %}
-        $url = [
-            'prefix' => false,
-            'plugin' => false,
-            'controller' => 'controller',
-            'action' => '{{ method }}',
-            1,
-        ];
-        $this->get($url);
-        $this->assertResponseCode(200);
-{% endif %}
-{% if  method|camelize == 'edit' %}
+{% if  method|camelize == 'View' %}
         $url = [
             'prefix' => false,
             'plugin' => false,
@@ -175,13 +164,8 @@ class {{ className }}Test extends TestCase
         ];
         $this->get($url);
         $this->assertResponseCode(200);
-
-        $data = [];
-        $this->post($url, $data);
-        $this->assertResponseCode(302);
-        //$this->asserRedirectContains('/index');
 {% endif %}
-{% if  method|camelize == 'add' %}
+{% if  method|camelize == 'Edit' %}
         $url = [
             'prefix' => false,
             'plugin' => false,
@@ -197,7 +181,23 @@ class {{ className }}Test extends TestCase
         $this->assertResponseCode(302);
         //$this->asserRedirectContains('/index');
 {% endif %}
-{% if  method|camelize == 'delete' %}
+{% if  method|camelize == 'Add' %}
+        $url = [
+            'prefix' => false,
+            'plugin' => false,
+            'controller' => 'controller',
+            'action' => '{{ method }}',
+            1,
+        ];
+        $this->get($url);
+        $this->assertResponseCode(200);
+
+        $data = [];
+        $this->post($url, $data);
+        $this->assertResponseCode(302);
+        //$this->asserRedirectContains('/index');
+{% endif %}
+{% if  method|camelize == 'Delete' %}
         $url = [
             'prefix' => false,
             'plugin' => false,

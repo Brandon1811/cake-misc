@@ -137,13 +137,6 @@ class {{ className }}Test extends TestCase
         Log::write('debug', 'inside {{ className }} test{{ method|camelize }} ');
 
 {% if isController %}
-        $url = [
-            'prefix' => false,
-            'plugin' => false,
-            'controller' => 'controller',
-            'action' => '{{ method }}',
-            1,
-        ];
 {% if  method|camelize == 'Index' %}
         $url = [
             'prefix' => false,

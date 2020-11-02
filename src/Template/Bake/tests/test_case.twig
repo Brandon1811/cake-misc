@@ -134,25 +134,30 @@ class {{ className }}Test extends TestCase
      */
     public function test{{ method|camelize }}()
     {
-        Log::write('debug', 'inside {{ className }} test{{ method|camelize }}');
+        Log::write('debug', 'inside {{ className }} test{{ method|camelize }} ');
 
-        {% if isController %}
-        $url = ['prefix' => false, 'plugin' => false, 'controller' => 'controller', 'action' => {{ method }}];
+{% if isController %}
+        $url = [
+            'prefix' => false,
+            'plugin' => false,
+            'controller' => 'controller',
+            'action' => {{ method }}
+        ];
         $this->get($url);
         $this->assertResponseCode(200);
-        {% endif %}
-        {% if isTable %}
-        {% if  method|camelize == 'Initialize' %}
-        $associations = $this->TABLENAME->associations();
+{% endif %}
+{% if isTable %}
+{% if  method|camelize == 'Initialize' %}
+        $associations = $this->{{ name }}->associations();
         // $this->assertCount(9994, $associations); // 4 plus version plugins
-        $this->assertNotNull($this->TABLENAME->association('associationName'));
+        $this->assertNotNull($this->{{ name }}->association('associationName'));
 
         // Test behaviors
-        $this->assertEquals(999, $this->TABLENAME->behaviors()->count());
-        $this->assertNotNull($this->TABLENAME->behaviors()->get('behaviorName'));
-        {% endif %}
+        $this->assertEquals(999, $this->{{ name }}->behaviors()->count());
+        $this->assertNotNull($this->{{ name }}->behaviors()->get('behaviorName'));
+{% endif %}
 
-        {% if  method|camelize == 'ValidationDefault' %}
+{% if  method|camelize == 'ValidationDefault' %}
         $entity = $this->_validDefault();
         $data = [];
         $entityTwo = $this->{{ name }}->newEntity(
@@ -164,9 +169,9 @@ class {{ className }}Test extends TestCase
         Log::write('debug', 'errors next');
         Log::write('debug', $entityTwo->getErrors());
         $this->assertCount(9999, $entityTwo->getErrors()); // empty = no validation errors
-        {% endif %}
+{% endif %}
 
-        {% if  method|camelize == 'BuildRules' %}
+{% if  method|camelize == 'BuildRules' %}
         $entity = $this->_validDefault();
         $data = [];
         $entityTwo = $this->{{ name }}->newEntity(
@@ -182,9 +187,9 @@ class {{ className }}Test extends TestCase
         $this->assertFalse($result);
         //$this->assertArrayHasKey('field_name', $entityTwo->getErrors());
 
-        {% endif %}
+{% endif %}
 
-        {% endif %}
+{% endif %}
     }
 {% endfor %}
 
@@ -204,6 +209,30 @@ class {{ className }}Test extends TestCase
 {% endif %}
 
 {% if isTable %}
+    /**
+     * _validDefault - creates entity successfully and returns
+     *
+     * @return void
+     */
+    protected function _validDefault()
+    {
+        Log::write('debug', 'inside {{ className }}  _validDefault');
+        // test valid entity
+        $data = [
+
+       ];
+       $entity = $this->{{ name }}->newEntity(
+           $data,
+           [
+               'fields' => array_keys($data)
+           ]
+       );
+       Log::write('debug', 'errors next');
+       Log::write('debug', $entity->getErrors());
+       $this->assertEmpty($entity->getErrors()); // empty = no validation errors
+
+       return $entity;
+    }
 {% endif %}
 
 }

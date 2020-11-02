@@ -19,6 +19,7 @@
 {% set isShell = type|lower == 'shell' %}
 {% set isTable = type|lower == 'table' %}
 {% set tableName = className|replace({'Table': ''}) %}
+{% set controllerName = className|replace({'Controller': ''}) %}
 {% set isCommand = type|lower == 'command' %}
 {% set extendsClass = 'TestCase' %}
 {% if isController %}
@@ -143,7 +144,7 @@ class {{ className }}Test extends {{ extendsClass }}
         $url = [
             'prefix' => false,
             'plugin' => false,
-            'controller' => 'controller',
+            'controller' => {{ controllerName }},
             'action' => '{{ method }}',
         ];
         $this->get($url);
@@ -153,7 +154,7 @@ class {{ className }}Test extends {{ extendsClass }}
         $url = [
             'prefix' => false,
             'plugin' => false,
-            'controller' => 'controller',
+            'controller' => {{ controllerName }},
             'action' => '{{ method }}',
             1,
         ];
@@ -164,7 +165,7 @@ class {{ className }}Test extends {{ extendsClass }}
         $url = [
             'prefix' => false,
             'plugin' => false,
-            'controller' => 'controller',
+            'controller' => {{ controllerName }},
             'action' => '{{ method }}',
             1,
         ];
@@ -180,7 +181,7 @@ class {{ className }}Test extends {{ extendsClass }}
         $url = [
             'prefix' => false,
             'plugin' => false,
-            'controller' => 'controller',
+            'controller' => {{ controllerName }},
             'action' => '{{ method }}',
             1,
         ];
@@ -196,7 +197,7 @@ class {{ className }}Test extends {{ extendsClass }}
         $url = [
             'prefix' => false,
             'plugin' => false,
-            'controller' => 'controller',
+            'controller' => {{ controllerName }},
             'action' => '{{ method }}',
             1,
         ];
@@ -209,7 +210,7 @@ class {{ className }}Test extends {{ extendsClass }}
 {% if isTable %}
 {% if  method|camelize == 'Initialize' %}
         $associations = $this->{{ tableName }}->associations();
-        // $this->assertCount(9994, $associations); // 4 plus version plugins
+        // $this->assertCount(999, $associations); // 4 plus version plugins
         $this->assertNotNull($this->{{ tableName }}->getAssociation('associationName'));
 
         // Test behaviors

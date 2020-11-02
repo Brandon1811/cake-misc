@@ -20,9 +20,13 @@
 {% set isTable = type|lower == 'table' %}
 {% set tableName = className|replace({'Table': ''}) %}
 {% set isCommand = type|lower == 'command' %}
+{% set extendsClass = 'TestCase' %}
 {% if isController %}
-    {%- set traitName = 'IntegrationTestTrait' %}
-{% elseif isShell or isCommand %}
+{%- set extendsClass = 'AppIntegrationTestCase' %}
+{%- set uses = uses|merge(["Misc\\Test\\TestCase\\AppIntegrationTestCase"]) %}
+{% endif %}
+
+{% if isShell or isCommand %}
     {%- set traitName = 'ConsoleIntegrationTestTrait' %}
 {% endif %}
 {%- set uses = uses|merge(["Cake\\TestSuite\\TestCase"]) %}
@@ -45,7 +49,7 @@ use {{ dependency }};
  * @uses \{{ fullClassName }}
 {% endif %}
  */
-class {{ className }}Test extends TestCase
+class {{ className }}Test extends {{ extendsClass }}
 {
 {% if traitName %}
     use {{ traitName }};

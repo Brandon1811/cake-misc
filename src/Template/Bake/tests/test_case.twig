@@ -134,7 +134,7 @@ class {{ className }}Test extends TestCase
      */
     public function test{{ method|camelize }}()
     {
-        Log::write('debug', 'inside {{ className }} test{{ method|camelize }});
+        Log::write('debug', 'inside {{ className }} test{{ method|camelize }}');
 
         {% if isController %}
         $url = ['prefix' => false, 'plugin' => false, 'controller' => 'controller', 'action' => {{ method }}];

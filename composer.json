@@ -1,5 +1,6 @@
 {
     "name": "brandon1811/cake-misc",
+    "version": "dev-master",
     "description": "Misc. CakePHP stuff",
     "type": "cakephp-plugin",
     "license": "MIT",

@@ -207,7 +207,7 @@ class {{ className }}Test extends TestCase
 {% if  method|camelize == 'Initialize' %}
         $associations = $this->{{ tableName }}->associations();
         // $this->assertCount(9994, $associations); // 4 plus version plugins
-        $this->assertNotNull($this->{{ tableName }}->association('associationName'));
+        $this->assertNotNull($this->{{ tableName }}->getAssociation('associationName'));
 
         // Test behaviors
         $this->assertEquals(999, $this->{{ tableName }}->behaviors()->count());

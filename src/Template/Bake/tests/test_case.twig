@@ -25,7 +25,6 @@
 {%- set extendsClass = 'AppIntegrationTestCase' %}
 {%- set uses = uses|merge(["Misc\\Test\\TestCase\\AppIntegrationTestCase"]) %}
 {% endif %}
-
 {% if isShell or isCommand %}
     {%- set traitName = 'ConsoleIntegrationTestTrait' %}
 {% endif %}

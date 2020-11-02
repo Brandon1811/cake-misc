@@ -128,18 +128,6 @@ class AppIntegrationTestCase extends TestCase
     }
 
     /**
-     * controllerSpy
-     *
-     * @param mixed $event cake event
-     * @param mixed $controller cake controller
-     * @return void
-     */
-    public function controllerSpy($event, $controller = null)
-    {
-        parent::controllerSpy($event, $controller);
-    }
-
-    /**
      * Clears session
      *
      * @return void

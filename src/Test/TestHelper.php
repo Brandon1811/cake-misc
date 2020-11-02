@@ -1,5 +1,5 @@
 <?php
-namespace App\Test;
+namespace Misc\Test;
 
 use Cake\Log\Log;
 use Cake\Utility\Security;

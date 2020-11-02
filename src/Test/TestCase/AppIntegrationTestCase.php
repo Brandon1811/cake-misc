@@ -1,5 +1,5 @@
 <?php
-namespace App\Test\TestCase;
+namespace Misc\Test\TestCase;
 
 use Cake\Log\Log;
 use Cake\I18n\FrozenTime;

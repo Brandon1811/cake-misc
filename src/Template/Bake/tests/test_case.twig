@@ -19,6 +19,11 @@
 {% set isShell = type|lower == 'shell' %}
 {% set isTable = type|lower == 'table' %}
 
+{% if isTable %}
+
+{% set tableName = className|replace({'Table': ''}) %}
+{% endif %}
+
 {% set isCommand = type|lower == 'command' %}
 {% if isController %}
     {%- set traitName = 'IntegrationTestTrait' %}
@@ -206,19 +211,19 @@ class {{ className }}Test extends TestCase
 {% endif %}
 {% if isTable %}
 {% if  method|camelize == 'Initialize' %}
-        $associations = $this->{{ name }}->associations();
+        $associations = $this->{{ tableName }}->associations();
         // $this->assertCount(9994, $associations); // 4 plus version plugins
-        $this->assertNotNull($this->{{ name }}->association('associationName'));
+        $this->assertNotNull($this->{{ tableName }}->association('associationName'));
 
         // Test behaviors
-        $this->assertEquals(999, $this->{{ name }}->behaviors()->count());
-        $this->assertNotNull($this->{{ name }}->behaviors()->get('behaviorName'));
+        $this->assertEquals(999, $this->{{ tableName }}->behaviors()->count());
+        $this->assertNotNull($this->{{ tableName }}->behaviors()->get('behaviorName'));
 {% endif %}
 
 {% if  method|camelize == 'ValidationDefault' %}
         $entity = $this->_validDefault();
         $data = [];
-        $entityTwo = $this->{{ name }}->newEntity(
+        $entityTwo = $this->{{ tableName }}->newEntity(
             $data,
             [
                 'fields' => array_keys($data)
@@ -232,7 +237,7 @@ class {{ className }}Test extends TestCase
 {% if  method|camelize == 'BuildRules' %}
         $entity = $this->_validDefault();
         $data = [];
-        $entityTwo = $this->{{ name }}->newEntity(
+        $entityTwo = $this->{{ tableName }}->newEntity(
             $data,
             [
                 'fields' => array_keys($data)
@@ -240,7 +245,7 @@ class {{ className }}Test extends TestCase
         );
         Log::write('debug', 'errors next');
         Log::write('debug', $entityTwo->getErrors());
-        $result = $this->{{ name }}->save($entityTwo);
+        $result = $this->{{ tableName }}->save($entityTwo);
 
         $this->assertFalse($result);
         //$this->assertArrayHasKey('field_name', $entityTwo->getErrors());
@@ -279,7 +284,7 @@ class {{ className }}Test extends TestCase
         $data = [
 
        ];
-       $entity = $this->{{ name }}->newEntity(
+       $entity = $this->{{ tableName }}->newEntity(
            $data,
            [
                'fields' => array_keys($data)

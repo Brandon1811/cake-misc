@@ -17,7 +17,7 @@
 <?php
 namespace {{ namespace }}\Model\Table;
 
-{% set uses = ['use ArrayObject;', 'use App\\Model\\Entity\\' ~ entity ~ ';', 'use Cake\\Log\\Log;', 'use Cake\\ORM\\Query;', 'use Cake\\ORM\\RulesChecker;', 'use Cake\\ORM\\Table;', 'use Cake\\Validation\\Validator;'] %}
+{% set uses = ['use ArrayObject;', 'use App\\Model\\Entity\\' ~ entity ~ ';', 'use Cake\\Event\\Event;', 'use Cake\\Log\\Log;', 'use Cake\\ORM\\Query;', 'use Cake\\ORM\\RulesChecker;', 'use Cake\\ORM\\Table;', 'use Cake\\Validation\\Validator;'] %}
 {{ uses|join('\n')|raw }}
 
 {{ DocBlock.classDescription(name, 'Model', annotations)|raw }}
@@ -120,6 +120,7 @@ class {{ name }}Table extends Table
 
         return $rules;
     }
+
 {% endif %}
     /**
      *  Before Marshal Event
@@ -127,7 +128,8 @@ class {{ name }}Table extends Table
      * @param \Cake\Event\Event $event The event object
      * @param ArrayObject $data entity data to be marshaled
      * @param ArrayObject $options save options
-     * @return bool|void
+     *
+     * @return void
      */
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
     {
@@ -138,11 +140,12 @@ class {{ name }}Table extends Table
      *  Before Save Event
      *
      * @param \Cake\Event\Event $event The event object
-     * @param {{ entity }} $entity entity to be saved
+     * @param {{ entity }} ${{ entity|camel }} entity to be saved
      * @param ArrayObject $options save options
+     *
      * @return bool|void
      */
-    public function beforeSave(Event $event, {{ entity }} $entity, ArrayObject $options)
+    public function beforeSave(Event $event, {{ entity }} ${{ entity|camel }}, ArrayObject $options)
     {
 
     }
@@ -153,13 +156,16 @@ class {{ name }}Table extends Table
      * @param \Cake\Event\Event $event The event object
      * @param {{ entity }} $entity entity that was saved
      * @param ArrayObject $options save options
+     *
      * @return bool|void
      */
-    public function afterSave(Event $event, {{ entity }} $entity, ArrayObject $options)
+    public function afterSave(Event $event, {{ entity }} ${{ entity|camel }}, ArrayObject $options)
     {
 
     }
+{% 1 == 1}
 
+{% endif %}
 {%- if connection is not same as('default') %}
 
     /**

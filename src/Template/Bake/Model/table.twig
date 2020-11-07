@@ -140,12 +140,12 @@ class {{ name }}Table extends Table
      *  Before Save Event
      *
      * @param \Cake\Event\Event $event The event object
-     * @param {{ entity }} ${{ entity|camel }} entity to be saved
+     * @param {{ entity }} ${{ entity|camelize }} entity to be saved
      * @param ArrayObject $options save options
      *
      * @return bool|void
      */
-    public function beforeSave(Event $event, {{ entity }} ${{ entity|camel }}, ArrayObject $options)
+    public function beforeSave(Event $event, {{ entity }} ${{ entity|camelize }}, ArrayObject $options)
     {
 
     }
@@ -159,7 +159,7 @@ class {{ name }}Table extends Table
      *
      * @return bool|void
      */
-    public function afterSave(Event $event, {{ entity }} ${{ entity|camel }}, ArrayObject $options)
+    public function afterSave(Event $event, {{ entity }} ${{ entity|camelize }}, ArrayObject $options)
     {
 
     }

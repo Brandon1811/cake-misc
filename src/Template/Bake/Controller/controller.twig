@@ -74,9 +74,11 @@ class {{ name }}Controller extends AppController
      */
     public function beforeFilter(Event $event)
     {
-
+        parent::beforeFilter($event);
     }
+{% if loop.index > 1 %}
 
+{% endif %}
 {%- for action in actions %}
 {% if loop.index > 1 %}
 

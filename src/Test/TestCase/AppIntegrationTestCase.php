@@ -63,9 +63,43 @@ class AppIntegrationTestCase extends TestCase
      * @param string $userName username to login with
      * @return void
      */
-    public function login($userName)
+    public function loginByEmail(string $email)
     {
-        $user = $this->UsersTable->find('auth')->where(['email' => $email])->firstOrFail()->toArray();
+        $user = $this->UsersTable->find('auth')->where(['Usres.email' => $email])->firstOrFail()->toArray();
+
+        $this->session([
+            'Auth' => [
+                'User' => $user,
+            ],
+        ]);
+    }
+
+    /**
+     * login - sets sesion data to mock logged in user
+     *
+     * @param string $userName username to login with
+     * @return void
+     */
+    public function loginByUsername(string $username)
+    {
+        $user = $this->UsersTable->find('auth')->where(['Users.username' => $username])->firstOrFail()->toArray();
+
+        $this->session([
+            'Auth' => [
+                'User' => $user,
+            ],
+        ]);
+    }
+
+    /**
+     * login - sets sesion data to mock logged in user
+     *
+     * @param string $userName username to login with
+     * @return void
+     */
+    public function loginById(int $id)
+    {
+        $user = $this->UsersTable->find('auth')->where(['Users.id' => $id])->firstOrFail()->toArray();
 
         $this->session([
             'Auth' => [

@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Post commit script to trigger jenkins build
+# and to push code to our other repositories.
+
+branch_name=$(git symbolic-ref --short HEAD)
+retcode=$?
+
+localRepo='local-store'
+slaveRepo='dev-ci'
+
+# Only push if branch_name was found (my be empty if in detached head state)
+if [ $retcode -eq 0 ] ; then
+    echo
+    echo "**** Pushing current branch $branch_name to $localRepo"
+    echo
+    git push $localRepo $branch_name;
+
+	echo
+	echo "**** Pushing current branch $branch_name to $slaveRepo"
+	echo
+	git push $slaveRepo $branch_name;
+
+	echo
+	echo "Notifying Jenkins of the new commit"
+	echo
+	curl -I -X POST http://{jenkins-user}}:11fa87bad560bf37b7cae6d1cce02db7b9@localhost:8085/job/{title}/build
+
+	echo
+	echo "Donezo!"
+	echo
+fi
+
+#11fa87bad560bf37b7cae6d1cce02db7b9

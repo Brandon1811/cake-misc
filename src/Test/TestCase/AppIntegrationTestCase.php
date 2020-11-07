@@ -65,7 +65,7 @@ class AppIntegrationTestCase extends TestCase
      */
     public function loginByEmail(string $email)
     {
-        $user = $this->UsersTable->find('auth')->where(['Usres.email' => $email])->firstOrFail()->toArray();
+        $user = $this->UsersTable->find('auth')->where(['Users.email' => $email])->firstOrFail()->toArray();
 
         $this->session([
             'Auth' => [

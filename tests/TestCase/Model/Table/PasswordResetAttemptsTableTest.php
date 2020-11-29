@@ -24,8 +24,8 @@ class PasswordResetAttemptsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.PasswordResetAttempts',
-        'app.Users',
+        'Misc.PasswordResetAttempts',
+        'Misc.Users',
     ];
 
     /**

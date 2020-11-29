@@ -58,16 +58,16 @@
         },
         {
             "name": "cakephp/cakephp",
-            "version": "3.9.3",
+            "version": "3.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "74f60e2e1f15c8fd27653db2ee835d426b59ee83"
+                "reference": "00364a31ddc8f713a63a01949f805c293a1c1422"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/74f60e2e1f15c8fd27653db2ee835d426b59ee83",
-                "reference": "74f60e2e1f15c8fd27653db2ee835d426b59ee83",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/00364a31ddc8f713a63a01949f805c293a1c1422",
+                "reference": "00364a31ddc8f713a63a01949f805c293a1c1422",
                 "shasum": ""
             },
             "require": {
@@ -77,7 +77,7 @@
                 "ext-mbstring": "*",
                 "laminas/laminas-diactoros": "^1.4.0",
                 "paragonie/random_compat": "^1.4|^2.0|9.99.99",
-                "php": ">=5.6.0",
+                "php": ">=5.6.0,<8.0.0",
                 "psr/log": "^1.0.0",
                 "psr/simple-cache": "^1.0.0"
             },
@@ -152,7 +152,7 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/cakephp"
             },
-            "time": "2020-10-06T01:21:56+00:00"
+            "time": "2020-11-14T19:08:03+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -273,22 +273,22 @@
         },
         {
             "name": "josegonzalez/queuesadilla",
-            "version": "0.0.10",
+            "version": "0.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/josegonzalez/php-queuesadilla.git",
-                "reference": "677d9608699b6cd3e8ce9d11084d1ad2e088da1c"
+                "reference": "323167b00e813867b5cfff7d7f24db94f6975d73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/josegonzalez/php-queuesadilla/zipball/677d9608699b6cd3e8ce9d11084d1ad2e088da1c",
-                "reference": "677d9608699b6cd3e8ce9d11084d1ad2e088da1c",
+                "url": "https://api.github.com/repos/josegonzalez/php-queuesadilla/zipball/323167b00e813867b5cfff7d7f24db94f6975d73",
+                "reference": "323167b00e813867b5cfff7d7f24db94f6975d73",
                 "shasum": ""
             },
             "require": {
                 "ext-pcntl": "*",
                 "league/event": "~2.0",
-                "php": ">=5.6.0",
+                "php": ">=7.2.0",
                 "psr/log": "~1.0"
             },
             "require-dev": {
@@ -297,7 +297,7 @@
                 "pda/pheanstalk": "~3.0",
                 "php-coveralls/php-coveralls": "~2.0",
                 "phpmd/phpmd": "dev-master",
-                "phpunit/phpunit": "~5.0",
+                "phpunit/phpunit": "~8.0",
                 "predis/predis": "~1.0",
                 "squizlabs/php_codesniffer": "dev-master"
             },
@@ -335,9 +335,9 @@
             ],
             "support": {
                 "issues": "https://github.com/josegonzalez/php-queuesadilla/issues",
-                "source": "https://github.com/josegonzalez/php-queuesadilla/tree/0.0.10"
+                "source": "https://github.com/josegonzalez/php-queuesadilla/tree/0.0.11"
             },
-            "time": "2019-06-29T07:38:57+00:00"
+            "time": "2020-11-21T08:15:22+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
@@ -1032,36 +1032,31 @@
         },
         {
             "name": "doctrine/instantiator",
-            "version": "1.3.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "f350df0268e904597e3bd9c4685c53e0e333feea"
+                "reference": "d56bf6102915de5702778fe20f2de3b2fe570b5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/f350df0268e904597e3bd9c4685c53e0e333feea",
-                "reference": "f350df0268e904597e3bd9c4685c53e0e333feea",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/d56bf6102915de5702778fe20f2de3b2fe570b5b",
+                "reference": "d56bf6102915de5702778fe20f2de3b2fe570b5b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^6.0",
+                "doctrine/coding-standard": "^8.0",
                 "ext-pdo": "*",
                 "ext-phar": "*",
-                "phpbench/phpbench": "^0.13",
-                "phpstan/phpstan-phpunit": "^0.11",
-                "phpstan/phpstan-shim": "^0.11",
-                "phpunit/phpunit": "^7.0"
+                "phpbench/phpbench": "^0.13 || 1.0.0-alpha2",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
@@ -1075,7 +1070,7 @@
                 {
                     "name": "Marco Pivetta",
                     "email": "ocramius@gmail.com",
-                    "homepage": "http://ocramius.github.com/"
+                    "homepage": "https://ocramius.github.io/"
                 }
             ],
             "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
@@ -1086,7 +1081,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/instantiator/issues",
-                "source": "https://github.com/doctrine/instantiator/tree/1.3.x"
+                "source": "https://github.com/doctrine/instantiator/tree/1.4.0"
             },
             "funding": [
                 {
@@ -1102,7 +1097,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-29T17:27:14+00:00"
+            "time": "2020-11-10T18:47:58+00:00"
         },
         {
             "name": "jasny/twig-extensions",
@@ -1170,16 +1165,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.10.1",
+            "version": "1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5"
+                "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
-                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/776f831124e9c62e1a2c601ecc52e776d8bb7220",
+                "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220",
                 "shasum": ""
             },
             "require": {
@@ -1216,7 +1211,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.x"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.10.2"
             },
             "funding": [
                 {
@@ -1224,7 +1219,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-29T13:22:24+00:00"
+            "time": "2020-11-13T09:40:50+00:00"
         },
         {
             "name": "phar-io/manifest",
